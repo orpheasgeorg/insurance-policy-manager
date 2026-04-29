@@ -1,15 +1,19 @@
 package org.orpheus.insurancepolicymanager.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Claim {
 
     @Id
@@ -17,7 +21,7 @@ public class Claim {
     private Long id;
 
     @NotNull
-    @Min(0)
+    @DecimalMin(value = "0.0", inclusive = true)
     private BigDecimal amount;
 
     @NotNull
@@ -27,5 +31,6 @@ public class Claim {
     private LocalDate date;
 
     @ManyToOne
+    @JoinColumn(name = "policy_id", nullable = false)
     private Policy policy;
 }
