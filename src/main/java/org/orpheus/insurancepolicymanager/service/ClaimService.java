@@ -33,4 +33,9 @@ public class ClaimService {
         return claimRepository.findAll();
     }
 
+    public List<Claim> getClaimByCustomerId(Long customerId){
+        List<Claim> saved_claims = claimRepository.findByPolicy_Customer_CustomerId(customerId);
+        return saved_claims;
+    }
+
 }
