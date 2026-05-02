@@ -20,7 +20,7 @@ public class PolicyService {
 
     public Policy getPolicyById(Long id){
         return policyRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new RuntimeException("Policy not found"));
     }
 
     public List<Policy> getAllPolicies(){
