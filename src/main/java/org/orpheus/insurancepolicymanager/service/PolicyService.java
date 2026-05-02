@@ -7,7 +7,6 @@ import org.orpheus.insurancepolicymanager.model.PolicyStatus;
 import org.orpheus.insurancepolicymanager.repository.CustomerRepository;
 import org.orpheus.insurancepolicymanager.repository.PolicyRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -31,12 +30,12 @@ public class PolicyService {
 
     public Policy createPolicy(Policy policy) {
         Customer customer = customerRepository.findById(policy.getCustomer().getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new RuntimeException("Policy not found"));
         policy.setCustomer(customer);
         return policyRepository.save(policy);
     }
 
-    public Policy updatePolicy (@PathVariable String status, @PathVariable Long id)
+    public Policy updatePolicy (String status, Long id)
     {
         Policy existing =  policyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Policy not found"));

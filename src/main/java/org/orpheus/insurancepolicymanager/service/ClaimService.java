@@ -35,6 +35,9 @@ public class ClaimService {
 
     public List<Claim> getClaimByCustomerId(Long customerId){
         List<Claim> saved_claims = claimRepository.findByPolicy_Customer_CustomerId(customerId);
+        if (saved_claims.isEmpty()){
+            throw new IllegalArgumentException("No claims found");
+        }
         return saved_claims;
     }
 

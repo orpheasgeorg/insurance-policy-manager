@@ -3,10 +3,8 @@ package org.orpheus.insurancepolicymanager.controller;
 import lombok.RequiredArgsConstructor;
 import org.orpheus.insurancepolicymanager.model.Claim;
 import org.orpheus.insurancepolicymanager.service.ClaimService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,22 +18,20 @@ public class ClaimController {
     @PostMapping
     public ResponseEntity<Claim> createClaim(@RequestBody Claim claim) {
         Claim saved = claimService.createClaim(claim);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+        return ResponseEntity.ok(saved);
     }
 
     @GetMapping
     public ResponseEntity<List<Claim>> getAllClaims() {
         List<Claim> saved = claimService.getAllClaims();
-        return ResponseEntity.status(HttpStatus.FOUND).body(saved);
+        return ResponseEntity.ok(saved);
     }
 
     @GetMapping("{customer_id}")
     public ResponseEntity<List<Claim>> getClaimByCustomerId(@PathVariable("customer_id") Long customerId) {
         List<Claim> saved = claimService.getClaimByCustomerId(customerId);
-        if (saved.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.status(HttpStatus.FOUND).body(saved);
+
+        return ResponseEntity.ok(saved);
     }
 
 
