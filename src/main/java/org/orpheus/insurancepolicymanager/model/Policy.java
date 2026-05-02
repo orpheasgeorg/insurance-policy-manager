@@ -22,7 +22,6 @@ public class Policy{
     @Enumerated(EnumType.STRING)
     private PolicyStatus policyStatus;
 
-
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;

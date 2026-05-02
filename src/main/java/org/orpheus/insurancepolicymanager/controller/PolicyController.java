@@ -8,11 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-    @RequestMapping("/api/policies")
+@RequestMapping("/api/policies")
 public class PolicyController {
 
     private final PolicyService policyService;
@@ -24,16 +23,20 @@ public class PolicyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Policy>> getPolicy(@PathVariable Long id){
-        Optional<Policy> saved = policyService.getPolicyById(id);
+    public ResponseEntity<Policy> getPolicy(@PathVariable Long id){
+        Policy saved = policyService.getPolicyById(id);
         return ResponseEntity.status(HttpStatus.FOUND).body(saved);
     }
-
 
     @PostMapping
     public ResponseEntity<Policy> createPolicy(@RequestBody Policy policy) {
         Policy saved = policyService.createPolicy(policy);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+    @PatchMapping("/{status}/{id}")
+    public Policy updatePolicy(@PathVariable String status, @PathVariable Long id) {
+        return policyService.updatePolicy(status,id);
     }
 
 }
