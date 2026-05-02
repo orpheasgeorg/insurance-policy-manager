@@ -8,6 +8,8 @@ import org.orpheus.insurancepolicymanager.repository.ClaimRepository;
 import org.orpheus.insurancepolicymanager.repository.PolicyRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ClaimService {
@@ -27,5 +29,8 @@ public class ClaimService {
         }
     }
 
+    public List<Claim> getAllClaims(){
+        return claimRepository.findAll();
+    }
 
 }
