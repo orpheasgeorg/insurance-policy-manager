@@ -13,6 +13,8 @@ import java.util.List;
 @RequestMapping("/api/claims")
 public class ClaimController {
 
+    //c
+
     final private ClaimService claimService;
 
     @PostMapping
