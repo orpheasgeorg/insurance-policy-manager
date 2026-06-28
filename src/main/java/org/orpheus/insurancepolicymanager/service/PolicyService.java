@@ -6,6 +6,7 @@ import org.orpheus.insurancepolicymanager.model.Policy;
 import org.orpheus.insurancepolicymanager.model.PolicyStatus;
 import org.orpheus.insurancepolicymanager.repository.CustomerRepository;
 import org.orpheus.insurancepolicymanager.repository.PolicyRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 public class PolicyService {
 
 
-    final private PolicyRepository policyRepository;
+    private final PolicyRepository policyRepository;
     private final CustomerRepository customerRepository;
 
     public Policy getPolicyById(Long id){
@@ -30,7 +31,7 @@ public class PolicyService {
 
     public Policy createPolicy(Policy policy) {
         Customer customer = customerRepository.findById(policy.getCustomer().getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Policy not found"));
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
         policy.setCustomer(customer);
         return policyRepository.save(policy);
     }
@@ -46,5 +47,8 @@ public class PolicyService {
     }
 
 
-
+    public ResponseEntity<Policy> deletePolicy(Long id) {
+        policyRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }

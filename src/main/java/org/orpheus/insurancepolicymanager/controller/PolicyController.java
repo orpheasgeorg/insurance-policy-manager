@@ -38,4 +38,9 @@ public class PolicyController {
         return policyService.updatePolicy(status,id);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Policy> deletePolicy(@PathVariable Long id) {
+        return policyService.deletePolicy(id);
+    }
+
 }
