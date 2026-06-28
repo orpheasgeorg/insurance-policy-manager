@@ -1,4 +1,4 @@
-package org.orpheus.insurancepolicymanager.security;
+package org.orpheus.insurancepolicymanager.security.filter;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -12,7 +12,7 @@ import java.util.Date;
 public class JwtUtil {
 
     @Value("${jwt.secret}")
-    private String SECRET_KEY;
+    private  String SECRET_KEY;
     private final long EXPIRATION = 1000 * 60 * 60 * 24; // 24 ώρες
 
 

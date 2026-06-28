@@ -1,4 +1,4 @@
-package org.orpheus.insurancepolicymanager.security;
+package org.orpheus.insurancepolicymanager.security.con_ser_rep;
 
 import org.orpheus.insurancepolicymanager.security.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
