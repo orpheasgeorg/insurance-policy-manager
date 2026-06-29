@@ -1,26 +1,4 @@
 # Insurance Policy Manager
-A REST API for managing insurance policies, customers, and claims.
+JWT authentication has been added to the project to improve security and is currently deployed using Render and Supabase. 
+Online testing is expected to be carried out soon, and the full documentation is still pending and will be written as part of the next development steps.
 
-## Technologies
-- Java, Spring Boot 3, Spring Data JPA, PostgreSQL, Maven
-
-## How to run
-1. Start PostgreSQL
-2. Configure `application.properties` with your DB credentials
-3. Run `InsurancePolicyManagerApplication.java`
-
-## Endpoints
-
-### Customers
-- `POST /api/customers` — Create a new customer
-
-### Policies
-- `POST /api/policies` — Create a new policy
-- `GET /api/policies` — Get all policies
-- `GET /api/policies/{id}` — Get policy by id
-- `PATCH /api/policies/{status}/{id}` — Update policy status
-
-### Claims
-- `POST /api/claims` — Submit a claim
-- `GET /api/claims` — Get all claims
-- `GET /api/claims/{customer_id}` — Get claims by customer
